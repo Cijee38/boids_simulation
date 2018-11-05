@@ -1,0 +1,47 @@
+import gui.* ;
+import java.awt.Color ;
+import gui.Rectangle ;
+import java.awt.Point;
+
+
+public class BallsSimulator implements Simulable {
+    Balls balles;
+    GUISimulator window;
+    public BallsSimulator(){
+	this.balles = new Balls();
+	new GUISimulator (500 , 500 , Color.BLACK);
+    }
+    public BallsSimulator(int n, GUISimulator gui){
+	this.balles = new Balls(n);
+	this.window = gui;
+    }
+    public BallsSimulator(int[] coord, GUISimulator gui){
+	this.balles = new Balls(coord);
+	this.window = gui;
+    }
+    
+    @Override
+    public void next(){
+	this.balles.translate(10, 10);
+	window.reset();
+	for (Point p : this.balles.balls){
+	    window.addGraphicalElement(
+				       new Rectangle(p.x , p.y ,
+						     Color.decode("#1f77b4"),
+						     Color.decode("#1f77b4"),
+						     10));
+	}
+    }
+    @Override
+    public void restart () {
+	this.balles.reInit();
+	window.reset();
+	for (Point p : this.balles.balls){
+	    window.addGraphicalElement(
+				       new Rectangle(p.x , p.y ,
+						     Color.decode("#1f77b4"),
+						     Color.decode("#1f77b4"),
+						     10));
+	}
+    }
+}
