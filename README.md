@@ -8,4 +8,4 @@
  * For boids system, it is possible to activate or not the mating inside species.
 
 
-Developed by team 78
+Developed by team 78 : Clément Gain, Audran Thomas, Stenzel Cackowski
